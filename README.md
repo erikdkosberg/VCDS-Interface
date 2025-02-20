@@ -1,25 +1,30 @@
 # VCDS (VagCom) Interface
 
-### USAGE:
+## Purpose of this repository:
 
-This program works by running log.py via python log.py
+This repository is meant to create a multiple line chart for sensor data coming from the VCDS(VagCom) software. You can use the VagCom program to record data coming from the CAN bus and generate a CSV file from that recorded session.
 
-It assumes that you have generated a 'session' csv file
+In my case, I had a misfire problem on my car and I wanted to see if that coincided with any other factors such as a big change in RPM.
 
-What it does is load the session into SQL Alchemy (Database.db) via 'backend.py'; it then utilizes 'graph.py' to create a combined line chart of all the data.
+I also wanted to illustrate the process of storing data in a db, fetching it with SQLAlchemy, and creating an html file to show it in the browser.
 
-### PURPOSE:
+## How this repository is set up:
  
-To be able to drill down on correlated data.
+The data in the CSV file is read in and stored in the `Database.db` file and becomes queryable through `backend.py`
 
-### ENHANCEMENTS:
+`session_reader.py` lets you specify a csv file you would like to read in - these files should exist in the `Sessions` folder
 
-Converting the scaling based on tolerances
+`graph.py` allows you to look into the db, create a new chart, save it in the `Charts` folder as an html file, and open it up in the browser
 
-### DEPENDENCIES:
+You can delete the contents of the db file to start over with a new session.
 
-python3+
+## Some things that can be done to improve this repository:
 
-pip install SQLAlchemy
+- allow unique sessions in the backend
+- a user interface to read in new sessions and view existing data
 
-pip install plotly
+### Dependencies:
+
+- SQLAlchemy
+- plotly
+- pandas

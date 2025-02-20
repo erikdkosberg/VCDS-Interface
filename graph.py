@@ -5,8 +5,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy import func
 import pandas as pd
 from sqlalchemy import create_engine, Column, Integer, Float, String
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker, declarative_base
 import plotly.offline as pyo
 
 Base = declarative_base()
@@ -52,7 +51,7 @@ for part_number, group_df in df.groupby(by="PartNumber"):
         )
     )
 
-pyo.offline.plot(fig, filename="control_chart.html")
+pyo.offline.plot(fig, filename="Charts/control_chart.html")
 
 # Show plot
 fig.show()
